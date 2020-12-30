@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"jdgc/lists-server/v2/utils/log"
 	"net/http"
 	"strings"
 	"sync"
@@ -34,6 +35,8 @@ func NewListHandlers() *listHandlers {
 }
 
 func (h *listHandlers) Lists(w http.ResponseWriter, r *http.Request) {
+	log.PrintRequest(r)
+
 	switch r.Method {
 	case "GET":
 		h.Get(w, r)
@@ -51,6 +54,7 @@ func (h *listHandlers) Lists(w http.ResponseWriter, r *http.Request) {
 func (h *listHandlers) Post(w http.ResponseWriter, r *http.Request) {
 	bodyBytes, err := ioutil.ReadAll(r.Body)
 	defer r.Body.Close()
+
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(err.Error()))

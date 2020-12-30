@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/spf13/cobra"
@@ -34,7 +35,7 @@ var serverStartCmd = &cobra.Command{
 		http.HandleFunc("/lists", listHandlers.Lists)
 		http.HandleFunc("lists/", listHandlers.GetList)
 
-		fmt.Printf("Server starting on port %s", port)
+		log.Printf("Server starting on port %s", port)
 		serverPort := ":" + port
 		err = http.ListenAndServe(serverPort, nil)
 
