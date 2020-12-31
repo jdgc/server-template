@@ -45,6 +45,7 @@ var migrateUpCmd = &cobra.Command{
 			return
 		}
 
+		db.Init()
 		db := db.DB
 
 		migrator, err := migrations.Init(db)
@@ -72,6 +73,7 @@ var migrateDownCmd = &cobra.Command{
 			return
 		}
 
+		db.Init()
 		db := db.DB
 
 		migrator, err := migrations.Init(db)

@@ -170,7 +170,7 @@ func (m *Migrator) Up(step int) error {
 			tx.Rollback()
 			return err
 		}
-		fmt.Println("finished migrating ", mg.Version)
+		fmt.Println("Migration Succeeded", mg.Version)
 
 		count++
 	}
@@ -212,7 +212,7 @@ func (m *Migrator) Down(step int) error {
 			tx.Rollback()
 			return err
 		}
-		fmt.Println("finished reverting ", mg.Version)
+		fmt.Println("Revert Succeeded", mg.Version)
 
 		count++
 	}
