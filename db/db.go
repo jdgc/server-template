@@ -35,3 +35,12 @@ func Init() {
 
 	fmt.Println("-- Database connection successful --")
 }
+
+func FullListsQuery() *sql.Rows {
+	rows, err := DB.Query(`SELECT * FROM lists`)
+	if err != nil {
+		panic(err)
+	}
+
+	return rows
+}
